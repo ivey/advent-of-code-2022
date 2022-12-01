@@ -43,3 +43,6 @@ bin/*
 
 # Ignore Bazel directories
 bazel-*
+
+# ignore input
+input.txt
