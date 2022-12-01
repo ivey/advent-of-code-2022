@@ -24,7 +24,7 @@ uint32_t top_calories(std::istream &input) {
     uint32_t cur = 0;
 
     std::string line;
-    auto calories = std::vector<uint32_t>{};
+    auto calories = std::vector < uint32_t > {};
 
     while (std::getline(input, line)) {
         if (line == "") {
