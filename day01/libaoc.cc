@@ -1,11 +1,7 @@
 #include "libaoc.h"
 
-#include <algorithm>
-#include <istream>
-#include <limits>
-#include <ranges>
-#include <utility>
-#include <sstream>
+#include <vector>
+#include <functional>
 
 uint32_t max_calories(std::istream &input) {
     uint32_t max = 0;
@@ -15,58 +11,30 @@ uint32_t max_calories(std::istream &input) {
 
     while (std::getline(input, line)) {
         if (line == "") {
-            if (cur > max) {
-                max = cur;
-            }
             cur = 0;
         } else {
             cur += std::stoi(line);
         }
-    }
-    if (cur > max) {
-        max = cur;
+        max = std::max(cur, max);
     }
     return max;
-};
+}
 
 uint32_t top_calories(std::istream &input) {
-    uint32_t max1 = 0;
-    uint32_t max2 = 0;
-    uint32_t max3 = 0;
     uint32_t cur = 0;
 
     std::string line;
+    auto calories = std::vector<uint32_t>{};
 
     while (std::getline(input, line)) {
         if (line == "") {
-            if (cur > max1) {
-                max3 = max2;
-                max2 = max1;
-                max1 = cur;
-            }
-            else if (cur > max2) {
-                max3 = max2;
-                max2 = cur;
-            }
-            else if (cur > max3) {
-                max3 = cur;
-            }
+            calories.emplace_back(cur);
             cur = 0;
         } else {
             cur += std::stoi(line);
         }
     }
-    if (cur > max1) {
-        max3 = max2;
-        max2 = max1;
-        max1 = cur;
-    }
-    else if (cur > max2) {
-        max3 = max2;
-        max2 = cur;
-    }
-    else if (cur > max3) {
-        max3 = cur;
-    }
-    return max1 + max2 + max3;
-};
+    calories.emplace_back(cur);
+    std::sort(calories.begin(), calories.end(), std::greater<uint32_t>());
+    return calories[0] + calories[1] + calories[2];
+}

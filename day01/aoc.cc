@@ -1,6 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <iostream>
 
 #include "libaoc.h"
 
