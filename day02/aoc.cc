@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    std::cout << "Part 1: score: " << guide_score(input) << "\n";
+    std::cout << "Part 2: score: " << guide_score2(input) << "\n";
 
     return 0;
 }
