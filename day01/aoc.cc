@@ -14,7 +14,9 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // std::cout << "Part 1: Elf with most calories: " << max_calories(input) << "\n";
+    std::cout << "Part 1: Elf with most calories: " << max_calories(input) << "\n";
+    input.clear();
+    input.seekg(0, std::ios::beg);
     std::cout << "Part 2: Elves with most calories: " << top_calories(input) << "\n";
 
     return 0;

@@ -14,6 +14,9 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    std::cout << "Part 1: score: " << guide_score(input) << "\n";
+    input.clear();
+    input.seekg(0, std::ios::beg);
     std::cout << "Part 2: score: " << guide_score2(input) << "\n";
 
     return 0;
