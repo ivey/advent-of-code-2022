@@ -3,8 +3,9 @@
 #include <map>
 #include <iostream>
 
-int priority(int i) {
-    return i < 91 ? (i - 38) : (i - 96);
+// just use the chars, no need to remember the ASCII offset, inspired by @jblazquez
+int priority(char c) {
+    return c >= 'a' ? (c - 'a' + 1) : (c - 'A' + 27);
 }
 
 uint32_t duplicate_item_priority(std::string &input) {
