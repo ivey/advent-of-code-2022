@@ -11,40 +11,30 @@
 
 
 int detect_sop(std::istream &input) {
-    int pos = 0;
-
-    std::deque<char> last4 = {};
-    last4.resize(4);
-    char c;
-    while(input.get(c)) {
-        pos++;
-        last4.push_back(c);
-        last4.pop_front();
-        if (last4[0] != 0 && last4[0] != last4[1] && last4[0] != last4[2] && last4[0] != last4[3] && last4[1] != last4[2] && last4[1] != last4[3] && last4[2] != last4[3]) {
-            break;
-        }
-    }
-
-    return pos;
+    return detect_unique_of_length(input, 4);
 }
 
 int detect_som(std::istream &input) {
+    return detect_unique_of_length(input, 14);
+}
+
+int detect_unique_of_length(std::istream &input, int length) {
     int pos = 0;
 
-    std::deque<char> last14 = {};
-    last14.resize(14);
+    std::deque<char> last = {};
+    last.resize(length);
 
     char c;
     while(input.get(c)) {
         pos++;
-        last14.push_back(c);
-        last14.pop_front();
+        last.push_back(c);
+        last.pop_front();
 
         std::unordered_set<char> seen;
-        for (char c : last14) {
+        for (char c : last) {
             seen.insert(c);
         }
-        if (seen.size() == 14) {
+        if (seen.size() == length && last.at(0) != 0) {
             break;
         }
     }

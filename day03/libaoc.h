@@ -1,5 +1,5 @@
-#ifndef AOCDAY1_H_
-#define AOCDAY1_H_
+#ifndef AOCDAY3_H_
+#define AOCDAY3_H_
 
 #include <cstdint>
 #include <iosfwd>
